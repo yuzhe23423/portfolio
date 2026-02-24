@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="weatherGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#weatherGradient)"/>
+
+  <g id="weather-icon">
+    <circle cx="400" cy="150" r="35" fill="white" opacity="0.7"/>
+    <path d="M 360 180 Q 360 165 375 160 Q 385 155 395 160 Q 405 155 415 160 Q 430 165 430 180 Z" fill="white" opacity="0.7"/>
+    <line x1="365" y1="200" x2="360" y2="215" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <line x1="400" y1="210" x2="400" y2="225" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <line x1="435" y1="200" x2="440" y2="215" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="white" text-anchor="middle" opacity="0.9">Weather Dashboard</text>
+</svg>
