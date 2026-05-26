@@ -2,49 +2,63 @@ import { Project } from "@/types";
 
 export const projects: Project[] = [
   {
-    id: "ecommerce-platform",
-    title: "E-Commerce Platform",
+    id: "events-demo",
+    title: "Event Management System",
     description:
-      "A full-stack e-commerce application with product management, cart functionality, and payment integration.",
+      "Create events, manage RSVPs, and track attendance with live capacity limits and filtering.",
     longDescription:
-      "Built with Next.js and Node.js, this platform features user authentication, product search and filtering, shopping cart, and Stripe payment integration. Includes an admin dashboard for inventory management.",
-    image: "/images/projects/ecommerce.svg",
-    tags: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/ongyuzhe/ecommerce",
+      "Browse upcoming and past events, RSVP, create new ones, and watch attendee counts update with capacity guards. State persists to localStorage so your changes stick across refreshes.",
+    image: "/images/projects/events.svg",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind"],
+    liveUrl: "/demos/events",
     featured: true,
   },
   {
-    id: "task-management-app",
-    title: "Task Management App",
+    id: "survey-demo",
+    title: "Survey Form System",
     description:
-      "A collaborative task management tool with real-time updates and team workspace features.",
+      "Multi-step survey with progress tracking, mixed input types, and an aggregated results view.",
     longDescription:
-      "Real-time task board application with drag-and-drop functionality, team workspaces, and activity tracking. Built using React and Firebase for real-time synchronization.",
-    image: "/images/projects/taskapp.svg",
-    tags: ["React", "Firebase", "Tailwind CSS", "DnD Kit"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/ongyuzhe/taskapp",
+      "Radio, checkbox, rating, and free-text inputs across a guided multi-step flow with progress bar, per-step validation, back/forward navigation, and a summary screen.",
+    image: "/images/projects/survey.svg",
+    tags: ["Next.js", "Forms", "Validation", "Multi-step"],
+    liveUrl: "/demos/survey",
     featured: true,
   },
   {
-    id: "weather-dashboard",
-    title: "Weather Dashboard",
+    id: "booking-demo",
+    title: "Booking Dashboard",
     description:
-      "A responsive weather dashboard with location search, forecasts, and interactive charts.",
-    image: "/images/projects/weather.svg",
-    tags: ["React", "TypeScript", "Chart.js", "OpenWeather API"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/ongyuzhe/weather",
+      "Weekly calendar dashboard with services, time slots, KPI cards, and a booking modal.",
+    longDescription:
+      "Switch between weeks, click any booking to cycle its status (confirmed → pending → cancelled), and create new appointments. Revenue and weekly stats are computed live.",
+    image: "/images/projects/booking.svg",
+    tags: ["Dashboard", "Calendar", "TypeScript", "Tailwind"],
+    liveUrl: "/demos/booking",
     featured: true,
   },
   {
-    id: "personal-blog",
-    title: "Personal Blog",
+    id: "business-demo",
+    title: "Business Landing Page",
     description:
-      "A markdown-powered blog with syntax highlighting, tag filtering, and RSS feed support.",
-    image: "/images/projects/blog.svg",
-    tags: ["Next.js", "MDX", "Tailwind CSS"],
-    githubUrl: "https://github.com/ongyuzhe/blog",
+      "Marketing landing for a fictional consulting firm — hero, features, testimonials, pricing.",
+    longDescription:
+      "Production-style marketing site for 'Northwind Consulting' covering everything from hero positioning through to a three-tier pricing block, all polished, responsive, and dark-mode aware.",
+    image: "/images/projects/business.svg",
+    tags: ["Landing page", "Marketing", "Tailwind", "Responsive"],
+    liveUrl: "/demos/business",
+    featured: true,
+  },
+  {
+    id: "admin-demo",
+    title: "Admin Panel",
+    description:
+      "Internal admin UI with KPI cards, a custom SVG revenue chart, activity feed, and users table.",
+    longDescription:
+      "Sidebar-driven admin shell with KPI tiles, a hand-rolled SVG line chart with gradient fill, a live activity feed, and a filterable/searchable users table with avatar generation and role badges.",
+    image: "/images/projects/admin.svg",
+    tags: ["Admin UI", "Charts", "Tables", "Dashboard"],
+    liveUrl: "/demos/admin",
+    featured: true,
   },
 ];

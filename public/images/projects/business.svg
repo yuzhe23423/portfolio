@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="businessGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb7185;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be123c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#businessGradient)"/>
+  <g transform="translate(360,95)" fill="none" stroke="white" stroke-width="2.5" opacity="0.85">
+    <rect x="0" y="20" width="30" height="60" rx="2"/>
+    <rect x="40" y="0" width="30" height="80" rx="2"/>
+    <rect x="80" y="35" width="30" height="45" rx="2"/>
+    <rect x="8" y="35" width="14" height="8" fill="white" stroke="none" opacity="0.5"/>
+    <rect x="48" y="15" width="14" height="8" fill="white" stroke="none" opacity="0.5"/>
+    <rect x="88" y="50" width="14" height="8" fill="white" stroke="none" opacity="0.5"/>
+  </g>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle" opacity="0.95">Business Landing Page</text>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" opacity="0.7">Hero · Features · Pricing · Social proof</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs>
+    <linearGradient id="adminGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#adminGradient)"/>
+  <g transform="translate(345,90)" opacity="0.85">
+    <rect x="0" y="0" width="40" height="90" rx="4" fill="none" stroke="white" stroke-width="2.5"/>
+    <line x1="10" y1="18" x2="30" y2="18" stroke="white" stroke-width="2"/>
+    <line x1="10" y1="32" x2="30" y2="32" stroke="white" stroke-width="2"/>
+    <line x1="10" y1="46" x2="30" y2="46" stroke="white" stroke-width="2"/>
+    <rect x="50" y="0" width="60" height="40" rx="4" fill="none" stroke="white" stroke-width="2.5"/>
+    <polyline points="55,32 70,20 85,26 105,10" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <rect x="50" y="50" width="60" height="40" rx="4" fill="none" stroke="white" stroke-width="2.5"/>
+    <line x1="58" y1="62" x2="100" y2="62" stroke="white" stroke-width="2"/>
+    <line x1="58" y1="72" x2="90" y2="72" stroke="white" stroke-width="2"/>
+    <line x1="58" y1="82" x2="100" y2="82" stroke="white" stroke-width="2"/>
+  </g>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white" text-anchor="middle" opacity="0.95">Admin Panel</text>
+  <text x="400" y="300" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" opacity="0.7">KPIs · Users · Charts · Activity</text>
+</svg>

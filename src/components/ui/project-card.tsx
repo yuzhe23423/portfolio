@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { ArrowUpRight, Github } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Github, PlayCircle } from "lucide-react";
 import { Project } from "@/types";
 import { ScrollReveal } from "./scroll-reveal";
 
@@ -8,7 +9,38 @@ interface ProjectCardProps {
   index: number;
 }
 
+interface LiveLinkProps {
+  url: string;
+  internal: boolean;
+  className?: string;
+  ariaLabel?: string;
+  children: React.ReactNode;
+}
+
+function LiveLink({ url, internal, className, ariaLabel, children }: LiveLinkProps) {
+  if (internal) {
+    return (
+      <Link href={url} className={className} aria-label={ariaLabel}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      aria-label={ariaLabel}
+    >
+      {children}
+    </a>
+  );
+}
+
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const internal = Boolean(project.liveUrl && project.liveUrl.startsWith("/"));
+
   return (
     <ScrollReveal delay={index * 0.1}>
       <div className="group relative flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-300 hover:border-accent/40 hover:shadow-[0_0_0_1px_var(--accent)]">
@@ -28,15 +60,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.title}
             </h3>
             {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <LiveLink
+                url={project.liveUrl}
+                internal={internal}
                 className="shrink-0 p-1 text-muted-foreground hover:text-accent transition-colors"
-                aria-label={`${project.title} live demo`}
+                ariaLabel={`${project.title} live demo`}
               >
                 <ArrowUpRight className="h-5 w-5" />
-              </a>
+              </LiveLink>
             )}
           </div>
           <p className="mt-3 flex-1 text-base text-muted-foreground leading-relaxed">
@@ -52,18 +83,31 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </span>
             ))}
           </div>
-          {project.githubUrl && (
-            <div className="mt-5 pt-4 border-t border-border">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-600 text-muted-foreground hover:text-accent transition-colors"
-                aria-label={`${project.title} source code`}
-              >
-                <Github className="h-4 w-4" />
-                View Source
-              </a>
+          {(project.liveUrl || project.githubUrl) && (
+            <div className="mt-5 flex items-center gap-4 border-t border-border pt-4">
+              {project.liveUrl && (
+                <LiveLink
+                  url={project.liveUrl}
+                  internal={internal}
+                  className="inline-flex items-center gap-2 text-sm font-600 text-accent hover:opacity-80 transition-colors"
+                  ariaLabel={`${project.title} live demo`}
+                >
+                  <PlayCircle className="h-4 w-4" />
+                  {internal ? "Try the demo" : "Live site"}
+                </LiveLink>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-600 text-muted-foreground hover:text-accent transition-colors"
+                  aria-label={`${project.title} source code`}
+                >
+                  <Github className="h-4 w-4" />
+                  Source
+                </a>
+              )}
             </div>
           )}
         </div>
