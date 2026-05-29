@@ -11,8 +11,7 @@ export function Projects() {
         <SectionHeading
           title="Selected"
           italic="work"
-          subtitle={`A folio of ${projects.length.toString().padStart(2, "0")} interactive pieces`}
-          index="II"
+          subtitle="Projects & demos"
         />
 
         <div className="grid grid-cols-12 gap-x-6">
@@ -23,17 +22,14 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-12 gap-x-6">
-          <div className="col-span-12 lg:col-start-2 lg:col-span-10 flex flex-wrap items-baseline justify-between gap-4 border-t border-border pt-6">
-            <p className="section-mark">
-              Continuation — folio of every interactive demo
-            </p>
+        <div className="mt-12 grid grid-cols-12 gap-x-6">
+          <div className="col-span-12 lg:col-start-2 lg:col-span-10 border-t border-border pt-6">
             <Link
               href="/demos"
               className="group inline-flex items-baseline gap-3 font-display text-2xl lg:text-3xl"
               style={{ fontVariationSettings: '"opsz" 60' }}
             >
-              <span className="italic draw-line">See every demo</span>
+              <span className="italic draw-line">See all live demos</span>
               <ArrowUpRight className="h-5 w-5 self-center transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </Link>
           </div>

@@ -13,12 +13,12 @@ export default function DemosLayout({ children }: { children: React.ReactNode })
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
             <span className="font-mono text-[10px] tracking-[0.18em] uppercase">
-              Back to folio
+              Back to portfolio
             </span>
           </Link>
 
           <div className="hidden lg:flex col-span-4 justify-center">
-            <span className="section-mark">Appendix — Live demos</span>
+            <span className="section-mark">Live demos</span>
           </div>
 
           <div className="col-span-6 lg:col-span-4 flex items-center justify-end gap-3">
@@ -26,7 +26,7 @@ export default function DemosLayout({ children }: { children: React.ReactNode })
               href="/demos"
               className="font-mono text-[10px] tracking-[0.18em] uppercase text-ink-mute hover:text-foreground transition-colors"
             >
-              Index ↗
+              All demos
             </Link>
             <ThemeToggle />
           </div>

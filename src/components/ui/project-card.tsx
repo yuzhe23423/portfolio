@@ -26,13 +26,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Body */}
       <div className={`col-span-10 lg:col-span-5 ${isEven ? "" : "lg:order-last"}`}>
-        <div className="flex items-baseline gap-3 mb-3">
-          {project.liveUrl && (
-            <span className="section-mark">
-              {internal ? "Interactive demo" : "Live site"} ↗
-            </span>
-          )}
-        </div>
+        {project.liveUrl && (
+          <span className="section-mark mb-3 block">
+            {internal ? "Interactive demo" : "Live site"}
+          </span>
+        )}
         <h3
           className="font-display text-3xl lg:text-4xl leading-[1] tracking-[-0.02em] font-300"
           style={{ fontVariationSettings: '"opsz" 96' }}
@@ -71,9 +69,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
-          <span className="absolute bottom-3 left-3 section-mark bg-background/85 px-2 py-1">
-            Plate {pad(index + 1)}
-          </span>
         </div>
       </div>
     </div>

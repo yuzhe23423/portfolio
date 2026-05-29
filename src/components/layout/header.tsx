@@ -7,11 +7,11 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { mark: "I", label: "About", href: "/#about" },
-  { mark: "II", label: "Work", href: "/#projects" },
-  { mark: "III", label: "Studio", href: "/#skills" },
-  { mark: "IV", label: "History", href: "/#experience" },
-  { mark: "V", label: "Write", href: "/#contact" },
+  { label: "About", href: "/#about" },
+  { label: "Work", href: "/#projects" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Header() {
@@ -42,10 +42,9 @@ export function Header() {
     >
       <nav className="mx-auto grid max-w-7xl grid-cols-12 items-center gap-x-6 px-6 py-4 lg:px-8">
         {/* Wordmark */}
-        <Link href="/#hero" className="col-span-6 lg:col-span-3 select-none group">
-          <span className="block section-mark">№ 01 — Folio</span>
+        <Link href="/#hero" className="col-span-6 lg:col-span-3 select-none">
           <span
-            className="font-display text-2xl leading-none tracking-[-0.02em] mt-0.5 block"
+            className="font-display text-2xl leading-none tracking-[-0.02em] block"
             style={{ fontVariationSettings: '"opsz" 60' }}
           >
             Ong Yu Zhe
@@ -59,24 +58,16 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="group flex items-baseline gap-1.5"
+              className="group font-display text-base draw-line"
+              style={{ fontVariationSettings: '"opsz" 24' }}
             >
-              <span className="font-mono text-[10px] text-ink-fade group-hover:text-accent transition-colors">
-                {link.mark}
-              </span>
-              <span
-                className="font-display text-base draw-line"
-                style={{ fontVariationSettings: '"opsz" 24' }}
-              >
-                {link.label}
-              </span>
+              {link.label}
             </a>
           ))}
         </div>
 
         {/* Right cluster */}
         <div className="hidden lg:flex col-span-2 items-center justify-end gap-3">
-          <span className="section-mark">EN ↔ MY</span>
           <ThemeToggle />
         </div>
 
@@ -113,16 +104,13 @@ export function Header() {
                   <a
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-baseline justify-between py-4"
+                    className="block py-4"
                   >
-                    <span className="flex items-baseline gap-3">
-                      <span className="font-mono text-xs text-ink-fade">{link.mark}</span>
-                      <span
-                        className="font-display text-3xl"
-                        style={{ fontVariationSettings: '"opsz" 60' }}
-                      >
-                        {link.label}
-                      </span>
+                    <span
+                      className="font-display text-3xl"
+                      style={{ fontVariationSettings: '"opsz" 60' }}
+                    >
+                      {link.label}
                     </span>
                   </a>
                 </motion.li>

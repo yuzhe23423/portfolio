@@ -18,14 +18,10 @@ export function TimelineItem({ entry, index, isLast }: TimelineItemProps) {
         {/* Date column */}
         <div className="col-span-12 lg:col-span-3">
           <p className="section-mark mb-2">
-            {entry.type === "work" ? "Engagement" : "Education"}
+            {entry.type === "work" ? "Work" : "Education"}
           </p>
-          <p className="font-mono text-sm leading-relaxed">
-            {entry.startDate}
-            <br />
-            <span className="text-ink-mute">↓</span>
-            <br />
-            {entry.endDate}
+          <p className="font-mono text-sm text-ink-mute">
+            {entry.startDate} — {entry.endDate}
           </p>
         </div>
 
@@ -44,7 +40,7 @@ export function TimelineItem({ entry, index, isLast }: TimelineItemProps) {
             >
               {entry.organization}
             </span>
-            <span className="section-mark">{entry.location}</span>
+            <span className="text-sm text-ink-mute">{entry.location}</span>
           </p>
 
           <ul className="mt-6 space-y-3 max-w-2xl">
@@ -53,9 +49,7 @@ export function TimelineItem({ entry, index, isLast }: TimelineItemProps) {
                 key={i}
                 className="flex items-baseline gap-3 text-base lg:text-lg leading-relaxed"
               >
-                <span className="font-mono text-[10px] text-ink-fade pt-1 shrink-0">
-                  {(i + 1).toString().padStart(2, "0")}
-                </span>
+                <span className="text-accent shrink-0">—</span>
                 <span style={{ fontFeatureSettings: '"ss01"' }}>{desc}</span>
               </li>
             ))}

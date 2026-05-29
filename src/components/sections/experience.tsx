@@ -7,10 +7,9 @@ export function Experience() {
     <section id="experience" className="py-28 lg:py-36 px-6 lg:px-8 bg-surface">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          title="A working"
-          italic="history"
-          subtitle="Chronology of the practice"
-          index="IV"
+          title="Work &"
+          italic="education"
+          subtitle="Where I've been"
         />
 
         <div className="grid grid-cols-12 gap-x-6">

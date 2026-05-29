@@ -7,10 +7,9 @@ export function Skills() {
     <section id="skills" className="py-28 lg:py-36 px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          title="Studio,"
-          italic="tooling"
-          subtitle="The instruments of the practice"
-          index="III"
+          title="Skills &"
+          italic="tools"
+          subtitle="What I work with"
         />
 
         <div className="grid grid-cols-12 gap-x-6">
