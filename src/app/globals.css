@@ -2,32 +2,56 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ── Light: warm paper + ink ─────────────────────────────────────── */
 :root {
-  --background: #faf6f1;
-  --foreground: #1a1a1a;
-  --muted: #f0ebe4;
-  --muted-foreground: #6b6560;
-  --primary: #e8553a;
-  --primary-foreground: #faf6f1;
-  --border: #e0d8cf;
-  --card: #ffffff;
-  --card-foreground: #1a1a1a;
-  --accent: #e8553a;
-  --surface: #f5f0ea;
+  --paper: #F2EDE2;
+  --paper-deep: #E8E1D2;
+  --ink: #161310;
+  --ink-soft: #2A2520;
+  --ink-mute: #6B6358;
+  --ink-fade: #9C9489;
+  --rule: #D6CFC0;
+  --rule-soft: #E2DCCD;
+  --card: #FAF6EC;
+  --vermilion: #C73E1D;
+  --vermilion-soft: #E25C3A;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--ink-mute);
+  --primary: var(--vermilion);
+  --primary-foreground: var(--paper);
+  --border: var(--rule);
+  --card-foreground: var(--ink);
+  --accent: var(--vermilion);
+  --surface: var(--paper-deep);
 }
 
+/* ── Dark: deep night + bone ─────────────────────────────────────── */
 .dark {
-  --background: #0e0e10;
-  --foreground: #ede8e2;
-  --muted: #1a1a1e;
-  --muted-foreground: #9e9890;
-  --primary: #f06a50;
-  --primary-foreground: #0e0e10;
-  --border: #2a2a2e;
-  --card: #151518;
-  --card-foreground: #ede8e2;
-  --accent: #f06a50;
-  --surface: #131315;
+  --paper: #0E0C0A;
+  --paper-deep: #16130F;
+  --ink: #E9E1CE;
+  --ink-soft: #C9C0AC;
+  --ink-mute: #8B8474;
+  --ink-fade: #5C5648;
+  --rule: #2A251D;
+  --rule-soft: #1E1B15;
+  --card: #14110D;
+  --vermilion: #E25C3A;
+  --vermilion-soft: #F07A53;
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted: var(--paper-deep);
+  --muted-foreground: var(--ink-mute);
+  --primary: var(--vermilion);
+  --primary-foreground: var(--paper);
+  --border: var(--rule);
+  --card-foreground: var(--ink);
+  --accent: var(--vermilion);
+  --surface: var(--paper-deep);
 }
 
 @theme inline {
@@ -42,8 +66,17 @@
   --color-card-foreground: var(--card-foreground);
   --color-accent: var(--accent);
   --color-surface: var(--surface);
-  --font-display: var(--font-bricolage);
-  --font-body: var(--font-dm-sans);
+
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-ink-fade: var(--ink-fade);
+  --color-rule-soft: var(--rule-soft);
+  --color-vermilion: var(--vermilion);
+  --color-vermilion-soft: var(--vermilion-soft);
+
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
 }
 
 html {
@@ -53,24 +86,121 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-family: var(--font-geist), Georgia, system-ui, sans-serif;
+  font-feature-settings: "ss01", "ss02", "cv11";
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Noise grain overlay */
+/* Editorial display font — Fraunces optical sizing */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 50, "WONK" 0;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono), "JetBrains Mono", ui-monospace, monospace;
+  font-feature-settings: "ss03";
+}
+
+/* Tabular numbers everywhere they appear in mono */
+.font-mono { font-variant-numeric: tabular-nums; }
+
+/* ── Editorial primitives ─────────────────────────────────────────── */
+
+/* Section mark: §I, §II, §III in mono, small caps */
+.section-mark {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-feature-settings: "tnum";
+}
+
+/* Big editorial numeral */
+.numeral {
+  font-family: var(--font-fraunces), serif;
+  font-feature-settings: "lnum", "tnum";
+  font-style: italic;
+  font-weight: 300;
+  font-variation-settings: "SOFT" 100, "opsz" 144;
+  color: var(--ink);
+}
+
+/* Decorative cross/dot row */
+.dotted-rule {
+  background-image: radial-gradient(circle, var(--ink-fade) 1px, transparent 1.2px);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  background-position: center;
+  height: 8px;
+}
+
+/* Asterisk divider */
+.aster-rule {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--ink-fade);
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.5rem;
+}
+.aster-rule::before, .aster-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Marquee — slow editorial scroll */
+@keyframes marquee {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); }
+}
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+/* Letter reveal */
+@keyframes letter-rise {
+  from { opacity: 0; transform: translateY(0.6em) rotate(-2deg); }
+  to   { opacity: 1; transform: translateY(0) rotate(0); }
+}
+.letter-rise > span {
+  display: inline-block;
+  opacity: 0;
+  animation: letter-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Underline that draws on hover */
+.draw-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-bottom: 2px;
+}
+.draw-line:hover { background-size: 100% 1px; }
+
+/* Editorial subtle paper texture */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  mix-blend-mode: multiply;
 }
-
 .dark body::before {
-  opacity: 0.04;
+  opacity: 0.06;
+  mix-blend-mode: screen;
 }
 
 /* Skip to content link */
@@ -81,18 +211,28 @@ body::before {
   transform: translateX(-50%);
   z-index: 100;
   padding: 0.75rem 1.5rem;
-  background: var(--primary);
+  background: var(--accent);
   color: var(--primary-foreground);
-  font-weight: 600;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   transition: top 0.2s;
 }
+.skip-to-content:focus { top: 0; }
 
-.skip-to-content:focus {
-  top: 0;
-}
-
-/* Selection color */
+/* Selection */
 ::selection {
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: var(--vermilion);
+  color: var(--paper);
 }
+
+/* Custom scrollbar — subtle */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border: 3px solid var(--background);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--ink-mute); }

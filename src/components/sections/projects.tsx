@@ -1,29 +1,42 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { ProjectCard } from "@/components/ui/project-card";
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 lg:px-8 bg-surface">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading title="Projects" subtitle="Selected work" />
+    <section id="projects" className="py-28 lg:py-36 px-6 lg:px-8 bg-surface">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          title="Selected"
+          italic="work"
+          subtitle={`A folio of ${projects.length.toString().padStart(2, "0")} interactive pieces`}
+          index="II"
+        />
 
-        <div className="grid gap-8 sm:grid-cols-2">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+        <div className="grid grid-cols-12 gap-x-6">
+          <div className="col-span-12 lg:col-start-2 lg:col-span-10">
+            {projects.map((project, i) => (
+              <ProjectCard key={project.id} project={project} index={i} />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-12 flex justify-center">
-          <Link
-            href="/demos"
-            className="group inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold transition hover:border-accent/40 hover:bg-accent/5"
-          >
-            See all live demos
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+        <div className="mt-16 grid grid-cols-12 gap-x-6">
+          <div className="col-span-12 lg:col-start-2 lg:col-span-10 flex flex-wrap items-baseline justify-between gap-4 border-t border-border pt-6">
+            <p className="section-mark">
+              Continuation — folio of every interactive demo
+            </p>
+            <Link
+              href="/demos"
+              className="group inline-flex items-baseline gap-3 font-display text-2xl lg:text-3xl"
+              style={{ fontVariationSettings: '"opsz" 60' }}
+            >
+              <span className="italic draw-line">See every demo</span>
+              <ArrowUpRight className="h-5 w-5 self-center transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, ArrowUpRight } from "lucide-react";
 import { SocialLink } from "@/types";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -14,22 +14,37 @@ interface SocialLinksProps {
 
 export function SocialLinks({ links, className = "" }: SocialLinksProps) {
   return (
-    <div className={`flex items-center gap-1 ${className}`}>
-      {links.map((link) => {
+    <ul className={`divide-y divide-border border-y border-border ${className}`}>
+      {links.map((link, i) => {
         const Icon = iconMap[link.icon];
         return (
-          <a
-            key={link.name}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center text-muted-foreground hover:text-accent transition-colors duration-200"
-            aria-label={link.name}
-          >
-            {Icon && <Icon className="h-5 w-5" />}
-          </a>
+          <li key={link.name}>
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between py-4 transition-colors hover:text-accent"
+              aria-label={link.name}
+            >
+              <span className="flex items-center gap-4">
+                <span className="font-mono text-[11px] text-ink-fade w-6">
+                  {(i + 1).toString().padStart(2, "0")}
+                </span>
+                <span
+                  className="font-display text-2xl lg:text-3xl"
+                  style={{ fontVariationSettings: '"opsz" 60' }}
+                >
+                  <span className="draw-line">{link.name}</span>
+                </span>
+              </span>
+              <span className="flex items-center gap-3 text-ink-mute">
+                {Icon && <Icon className="h-4 w-4" />}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </a>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

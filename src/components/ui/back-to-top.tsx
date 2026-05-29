@@ -17,14 +17,17 @@ export function BackToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center bg-foreground text-background shadow-xl transition-all duration-300 hover:bg-accent hover:text-primary-foreground ${
+      className={`fixed bottom-8 right-8 z-50 inline-flex items-center gap-2 bg-foreground text-background px-4 py-3 transition-all duration-500 hover:bg-accent ${
         show
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-4 pointer-events-none"
       }`}
       aria-label="Back to top"
     >
-      <ArrowUp className="h-5 w-5" />
+      <ArrowUp className="h-3.5 w-3.5" />
+      <span className="font-mono text-[10px] tracking-[0.2em] uppercase">
+        Top
+      </span>
     </button>
   );
 }

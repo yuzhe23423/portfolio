@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Header } from "@/components/layout/header";
@@ -7,18 +7,24 @@ import { Footer } from "@/components/layout/footer";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { personalInfo } from "@/data/personal";
 
-const bricolage = Bricolage_Grotesque({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-bricolage",
+  variable: "--font-fraunces",
   display: "swap",
-  weight: ["400", "600", "700", "800"],
+  axes: ["SOFT", "WONK", "opsz"],
+  style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-geist",
   display: "swap",
-  weight: ["400", "500", "600"],
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -40,10 +46,7 @@ export const metadata: Metadata = {
     description: personalInfo.tagline,
     images: ["/images/og-image.png"],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 const jsonLd = {
@@ -57,11 +60,7 @@ const jsonLd = {
   sameAs: personalInfo.socialLinks.map((l) => l.url),
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -71,12 +70,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${bricolage.variable} ${dmSans.variable} font-body antialiased`}
+        className={`${fraunces.variable} ${geist.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <a href="#main" className="skip-to-content">
-            Skip to content
-          </a>
+          <a href="#main" className="skip-to-content">Skip to content</a>
           <Header />
           <main id="main">{children}</main>
           <Footer />

@@ -1,44 +1,49 @@
-import { Monitor, Server, Database, Wrench } from "lucide-react";
 import { SkillCategory as SkillCategoryType } from "@/types";
 import { ScrollReveal } from "./scroll-reveal";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Monitor,
-  Server,
-  Database,
-  Wrench,
-};
 
 interface SkillCategoryProps {
   category: SkillCategoryType;
   index: number;
 }
 
-export function SkillCategoryCard({ category, index }: SkillCategoryProps) {
-  const Icon = iconMap[category.icon];
+const numerals = ["I", "II", "III", "IV", "V", "VI"];
 
+export function SkillCategoryCard({ category, index }: SkillCategoryProps) {
   return (
     <ScrollReveal delay={index * 0.1}>
-      <div className="group border border-border bg-card p-7 h-full transition-all duration-300 hover:border-accent/40">
-        <div className="flex items-center gap-3 mb-5">
-          {Icon && (
-            <div className="flex h-10 w-10 items-center justify-center bg-accent/10 text-accent">
-              <Icon className="h-5 w-5" />
-            </div>
-          )}
-          <h3 className="font-display text-lg font-700 text-card-foreground">
-            {category.name}
+      <div className="group grid grid-cols-12 gap-x-6 py-8 border-t border-border">
+        <div className="col-span-2 lg:col-span-1">
+          <span className="numeral text-3xl">{numerals[index]}</span>
+        </div>
+        <div className="col-span-10 lg:col-span-3">
+          <p className="section-mark mb-2">Discipline</p>
+          <h3
+            className="font-display text-2xl lg:text-3xl leading-tight tracking-[-0.02em] font-300"
+            style={{ fontVariationSettings: '"opsz" 60' }}
+          >
+            <span className="italic">{category.name}</span>
           </h3>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {category.skills.map((skill) => (
-            <span
-              key={skill}
-              className="border border-border px-3 py-1.5 text-sm text-muted-foreground transition-colors group-hover:border-border"
-            >
-              {skill}
-            </span>
-          ))}
+        <div className="col-span-12 lg:col-span-8 mt-4 lg:mt-0">
+          <p className="section-mark mb-3">Instruments</p>
+          <ul className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+            {category.skills.map((skill, i) => (
+              <li
+                key={skill}
+                className="flex items-baseline gap-2 text-foreground"
+              >
+                <span className="font-mono text-[10px] text-ink-fade">
+                  {(i + 1).toString().padStart(2, "0")}
+                </span>
+                <span
+                  className="font-display text-xl lg:text-2xl draw-line"
+                  style={{ fontVariationSettings: '"opsz" 36' }}
+                >
+                  {skill}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </ScrollReveal>

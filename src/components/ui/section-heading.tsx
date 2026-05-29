@@ -3,22 +3,38 @@ import { ScrollReveal } from "./scroll-reveal";
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
+  index: string;
+  italic?: string;
 }
 
-export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
+export function SectionHeading({ title, subtitle, index, italic }: SectionHeadingProps) {
   return (
-    <ScrollReveal className="mb-16">
-      <div className="flex items-center gap-4 mb-3">
-        <div className="h-px flex-1 max-w-12 bg-accent" />
-        {subtitle && (
-          <span className="text-accent text-sm font-600 uppercase tracking-widest">
-            {subtitle}
-          </span>
-        )}
+    <ScrollReveal className="mb-20">
+      <div className="grid grid-cols-12 items-baseline gap-x-6 border-t border-border pt-6">
+        <div className="col-span-2 lg:col-span-1">
+          <span className="section-mark">§ {index}</span>
+        </div>
+        <div className="col-span-10 lg:col-span-11">
+          {subtitle && (
+            <p className="section-mark mb-4 block">{subtitle}</p>
+          )}
+          <h2 className="font-display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.92] tracking-[-0.025em] font-300">
+            {title}
+            {italic && (
+              <>
+                {" "}
+                <span
+                  className="italic font-300"
+                  style={{ fontVariationSettings: '"SOFT" 100, "opsz" 144' }}
+                >
+                  {italic}
+                </span>
+              </>
+            )}
+            <span className="text-accent">.</span>
+          </h2>
+        </div>
       </div>
-      <h2 className="font-display text-4xl font-800 tracking-tight sm:text-5xl lg:text-6xl">
-        {title}<span className="text-accent">.</span>
-      </h2>
     </ScrollReveal>
   );
 }
