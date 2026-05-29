@@ -2,19 +2,20 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ── Light: warm paper + ink ─────────────────────────────────────── */
+/* ── Light: cool paper + ink, slate accent ───────────────────────── */
 :root {
-  --paper: #F2EDE2;
-  --paper-deep: #E8E1D2;
-  --ink: #161310;
-  --ink-soft: #2A2520;
-  --ink-mute: #6B6358;
-  --ink-fade: #9C9489;
-  --rule: #D6CFC0;
-  --rule-soft: #E2DCCD;
-  --card: #FAF6EC;
-  --vermilion: #C73E1D;
-  --vermilion-soft: #E25C3A;
+  --paper: #EFEEEC;
+  --paper-deep: #E4E3E0;
+  --ink: #14151A;
+  --ink-soft: #2B2D34;
+  --ink-mute: #5C5F66;
+  --ink-fade: #8E9099;
+  --rule: #D3D2CF;
+  --rule-soft: #E1E0DD;
+  --card: #F7F6F4;
+  --vermilion: #3D5169;
+  --vermilion-soft: #54708F;
+  --pop: #2E55D4;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -28,19 +29,20 @@
   --surface: var(--paper-deep);
 }
 
-/* ── Dark: deep night + bone ─────────────────────────────────────── */
+/* ── Dark: cool night + bone, slate accent ───────────────────────── */
 .dark {
-  --paper: #0E0C0A;
-  --paper-deep: #16130F;
-  --ink: #E9E1CE;
-  --ink-soft: #C9C0AC;
-  --ink-mute: #8B8474;
-  --ink-fade: #5C5648;
-  --rule: #2A251D;
-  --rule-soft: #1E1B15;
-  --card: #14110D;
-  --vermilion: #E25C3A;
-  --vermilion-soft: #F07A53;
+  --paper: #0C0D10;
+  --paper-deep: #131419;
+  --ink: #E7E8EB;
+  --ink-soft: #C5C7CD;
+  --ink-mute: #83868F;
+  --ink-fade: #565962;
+  --rule: #24262C;
+  --rule-soft: #181A1F;
+  --card: #111217;
+  --vermilion: #8BA3C0;
+  --vermilion-soft: #A7BBD3;
+  --pop: #6E8CF0;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -73,6 +75,7 @@
   --color-rule-soft: var(--rule-soft);
   --color-vermilion: var(--vermilion);
   --color-vermilion-soft: var(--vermilion-soft);
+  --color-pop: var(--pop);
 
   --font-display: var(--font-fraunces);
   --font-body: var(--font-geist);
@@ -221,10 +224,10 @@ body::before {
 }
 .skip-to-content:focus { top: 0; }
 
-/* Selection */
+/* Selection — the tiny blue pop */
 ::selection {
-  background: var(--vermilion);
-  color: var(--paper);
+  background: var(--pop);
+  color: #ffffff;
 }
 
 /* Custom scrollbar — subtle */

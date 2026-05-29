@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/types";
 import { ScrollReveal } from "./scroll-reveal";
+import { ProjectArtwork } from "./project-artwork";
 
 interface ProjectCardProps {
   project: Project;
@@ -59,17 +59,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Image */}
+      {/* Artwork */}
       <div className={`col-span-12 lg:col-span-6 mt-6 lg:mt-0 ${isEven ? "" : "lg:col-start-2"}`}>
-        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-          />
-        </div>
+        <ProjectArtwork kind={project.id.replace("-demo", "")} />
       </div>
     </div>
   );
