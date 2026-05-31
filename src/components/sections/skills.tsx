@@ -14,12 +14,8 @@ export function Skills() {
 
         <div className="grid grid-cols-12 gap-x-6">
           <div className="col-span-12 lg:col-start-2 lg:col-span-10">
-            {skills.map((category, i) => (
-              <SkillCategoryCard
-                key={category.name}
-                category={category}
-                index={i}
-              />
+            {skills.map((category) => (
+              <SkillCategoryCard key={category.name} category={category} />
             ))}
             <div className="border-t border-border" />
           </div>

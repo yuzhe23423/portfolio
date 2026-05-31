@@ -2,7 +2,6 @@ import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { personalInfo } from "@/data/personal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 export function About() {
   return (
@@ -11,7 +10,7 @@ export function About() {
         <SectionHeading title="About" italic="me" subtitle="Who I am" />
 
         <div className="grid grid-cols-12 gap-x-6 gap-y-12 items-start">
-          <ScrollReveal className="col-span-12 md:col-span-5 lg:col-span-4">
+          <div className="col-span-12 md:col-span-5 lg:col-span-4">
             <div className="relative w-full aspect-[4/5] overflow-hidden">
               <Image
                 src="/images/profile-placeholder.svg"
@@ -21,9 +20,9 @@ export function About() {
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-          </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={0.15} className="col-span-12 md:col-span-7 lg:col-span-7 lg:col-start-6">
+          <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:col-start-6">
             <div className="space-y-6">
               {personalInfo.bio.map((paragraph, i) => (
                 <p
@@ -42,7 +41,7 @@ export function About() {
                 </span>
               </div>
             </div>
-          </ScrollReveal>
+          </div>
         </div>
       </div>
     </section>

@@ -2,19 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "About", href: "/portfolio#about" },
-  { label: "Work", href: "/portfolio#projects" },
-  { label: "Skills", href: "/portfolio#skills" },
-  { label: "Experience", href: "/portfolio#experience" },
-  { label: "Contact", href: "/portfolio#contact" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
 ];
 
-export function Header() {
+export function CompanyHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -40,43 +39,48 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto grid max-w-7xl grid-cols-12 items-center gap-x-6 px-6 py-4 lg:px-8">
-        {/* Wordmark */}
-        <Link href="/portfolio" className="col-span-6 lg:col-span-3 select-none">
+      <nav className="mx-auto flex max-w-7xl items-center gap-6 px-6 py-4 lg:px-8">
+        <Link href="/" className="flex items-center gap-2 select-none">
           <span
-            className="font-display text-2xl leading-none tracking-[-0.02em] block"
-            style={{ fontVariationSettings: '"opsz" 60' }}
+            aria-hidden
+            className="inline-block h-3.5 w-3.5 rounded-full border-2 border-accent"
+            style={{
+              background:
+                "conic-gradient(from 225deg, var(--accent) 0deg 90deg, transparent 90deg)",
+            }}
+          />
+          <span
+            className="font-display text-xl leading-none tracking-[-0.02em]"
+            style={{ fontVariationSettings: '"opsz" 36' }}
           >
-            Ong Yu Zhe
-            <span className="italic text-accent">.</span>
+            Sundial<span className="italic text-accent">.</span>
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex col-span-6 lg:col-span-7 items-center justify-center gap-7">
+        <div className="hidden md:flex items-center gap-6 ml-4">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
-              className="group font-display text-base draw-line"
-              style={{ fontVariationSettings: '"opsz" 24' }}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground draw-line transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
-        {/* Right cluster */}
-        <div className="hidden lg:flex col-span-2 items-center justify-end gap-3">
+        <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-        </div>
-
-        {/* Mobile */}
-        <div className="md:hidden col-span-6 flex items-center justify-end gap-2">
-          <ThemeToggle />
+          <Link
+            href="/#contact"
+            className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-foreground text-background px-4 py-2 text-sm font-semibold hover:bg-accent transition-colors"
+          >
+            Start a project
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 text-foreground"
+            className="md:hidden p-2 text-foreground"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -94,14 +98,9 @@ export function Header() {
             className="md:hidden overflow-hidden border-t border-border bg-background/98 backdrop-blur-xl"
           >
             <ul className="px-6 py-6 divide-y divide-border">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <a
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className="block py-4"
@@ -112,9 +111,19 @@ export function Header() {
                     >
                       {link.label}
                     </span>
-                  </a>
-                </motion.li>
+                  </Link>
+                </li>
               ))}
+              <li>
+                <Link
+                  href="/#contact"
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-foreground text-background px-5 py-3 text-sm font-semibold"
+                >
+                  Start a project
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

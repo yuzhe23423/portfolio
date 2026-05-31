@@ -18,7 +18,6 @@ export function Experience() {
               <TimelineItem
                 key={entry.id}
                 entry={entry}
-                index={i}
                 isLast={i === experience.length - 1}
               />
             ))}

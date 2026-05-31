@@ -102,6 +102,36 @@ const pricing = [
 export default function BusinessLanding() {
   return (
     <div className="overflow-hidden">
+      {/* Northwind top nav */}
+      <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center gap-8 px-6 py-3 lg:px-8">
+          <a href="#hero" className="flex items-center gap-2 select-none">
+            <span className="inline-block h-2.5 w-2.5 rotate-45 bg-accent" />
+            <span className="font-display text-lg font-700 tracking-tight">
+              Northwind
+            </span>
+          </a>
+          <nav className="hidden md:flex items-center gap-7 text-sm">
+            <a href="#approach" className="text-muted-foreground hover:text-foreground transition-colors">
+              Approach
+            </a>
+            <a href="#approach" className="text-muted-foreground hover:text-foreground transition-colors">
+              Pricing
+            </a>
+            <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">
+              About
+            </a>
+          </nav>
+          <a
+            href="#contact"
+            className="ml-auto inline-flex items-center gap-2 rounded-full bg-foreground text-background px-4 py-1.5 text-sm font-semibold hover:opacity-90 transition"
+          >
+            Book a call
+            <ArrowRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </header>
+
       {/* Hero */}
       <section className="relative px-6 pt-20 pb-28 lg:px-8 lg:pt-32">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-accent/[0.07] via-transparent to-transparent" />

@@ -14,9 +14,9 @@ export function Hero() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
           className="section-mark mb-8 inline-flex items-center gap-2"
         >
           <span className="relative flex h-1.5 w-1.5">
@@ -26,38 +26,35 @@ export function Hero() {
           Available for work
         </motion.p>
 
-        <motion.h1
-          initial="hidden"
-          animate="show"
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
-          className="font-display text-[clamp(3.5rem,12vw,11rem)] leading-[0.86] tracking-[-0.04em] font-300"
-        >
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } },
-            }}
-            className="block"
-          >
-            {personalInfo.name.split(" ")[0]}
-          </motion.span>
-          <motion.span
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } },
-            }}
-            className="block"
-            style={{ fontVariationSettings: '"SOFT" 100, "opsz" 144' }}
-          >
-            <span className="italic">{personalInfo.name.split(" ").slice(1).join(" ")}</span>
-            <span className="text-accent">.</span>
-          </motion.span>
-        </motion.h1>
+        <h1 className="font-display text-[clamp(3.5rem,12vw,11rem)] leading-[0.86] tracking-[-0.04em] font-300">
+          <span className="block overflow-hidden pb-[0.04em]">
+            <motion.span
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.7, delay: 0.12, ease }}
+              className="block"
+            >
+              {personalInfo.name.split(" ")[0]}
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden pb-[0.04em]">
+            <motion.span
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease }}
+              className="block"
+              style={{ fontVariationSettings: '"SOFT" 100, "opsz" 144' }}
+            >
+              <span className="italic">{personalInfo.name.split(" ").slice(1).join(" ")}</span>
+              <span className="text-accent">.</span>
+            </motion.span>
+          </span>
+        </h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7, ease }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12 grid grid-cols-12 gap-x-6 gap-y-6"
         >
           <p
@@ -75,9 +72,9 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9, ease }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-4"
         >
           <a

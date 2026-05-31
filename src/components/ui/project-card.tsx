@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Project } from "@/types";
-import { ScrollReveal } from "./scroll-reveal";
 import { ProjectArtwork } from "./project-artwork";
 
 interface ProjectCardProps {
@@ -67,20 +66,16 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   );
 
   if (!project.liveUrl) {
-    return (
-      <ScrollReveal delay={index * 0.08}>{inner}</ScrollReveal>
-    );
+    return inner;
+  }
+
+  if (internal) {
+    return <Link href={project.liveUrl}>{inner}</Link>;
   }
 
   return (
-    <ScrollReveal delay={index * 0.08}>
-      {internal ? (
-        <Link href={project.liveUrl}>{inner}</Link>
-      ) : (
-        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-          {inner}
-        </a>
-      )}
-    </ScrollReveal>
+    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+      {inner}
+    </a>
   );
 }

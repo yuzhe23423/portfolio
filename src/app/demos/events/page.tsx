@@ -1,7 +1,15 @@
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
-import { CalendarDays, MapPin, Users, Plus, X, Check, Trash2 } from "lucide-react";
+import {
+  CalendarDays,
+  MapPin,
+  Users,
+  Plus,
+  X,
+  Check,
+  Trash2,
+} from "lucide-react";
 
 type Event = {
   id: string;
@@ -126,51 +134,48 @@ export default function EventsDemo() {
   };
 
   return (
-    <section className="px-6 py-12 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <header className="mb-10 flex flex-wrap items-end justify-between gap-4">
+    <section className="px-6 py-10 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="mb-2 text-sm font-medium tracking-wider uppercase text-accent">
-              Demo · Event Management
-            </p>
-            <h1 className="font-display text-4xl font-700 tracking-tight md:text-5xl">
-              Events
+            <h1 className="font-display text-3xl font-700 tracking-tight md:text-4xl">
+              Discover events
             </h1>
-            <p className="mt-2 text-muted-foreground">
-              Browse upcoming events, RSVP, or create your own.
+            <p className="mt-1 text-muted-foreground">
+              Browse upcoming events near you, RSVP, or host your own.
             </p>
           </div>
           <div className="flex gap-2">
             <button
-              onClick={resetDemo}
-              className="rounded-lg border border-border px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted transition"
+              onClick={() => setShowForm(true)}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
             >
-              Reset
+              <Plus className="h-3.5 w-3.5" /> New event
             </button>
             <button
-              onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+              onClick={resetDemo}
+              className="rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground hover:bg-muted transition"
             >
-              <Plus className="h-4 w-4" /> New event
+              Reset demo
             </button>
           </div>
-        </header>
-
-        <div className="mb-6 inline-flex rounded-lg border border-border bg-card p-1">
-          {(["upcoming", "past", "mine"] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`rounded-md px-4 py-1.5 text-sm font-medium capitalize transition ${
-                filter === f
-                  ? "bg-accent text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {f === "mine" ? "My RSVPs" : f}
-            </button>
-          ))}
         </div>
+
+          <div className="mb-6 inline-flex rounded-lg border border-border bg-card p-1">
+            {(["upcoming", "past", "mine"] as const).map((f) => (
+              <button
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`rounded-md px-4 py-1.5 text-sm font-medium capitalize transition ${
+                  filter === f
+                    ? "bg-accent text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {f === "mine" ? "My RSVPs" : f}
+              </button>
+            ))}
+          </div>
 
         {filtered.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border p-12 text-center text-muted-foreground">
@@ -189,10 +194,10 @@ export default function EventsDemo() {
             ))}
           </div>
         )}
-      </div>
+        </div>
 
-      {showForm && <EventForm onClose={() => setShowForm(false)} onSubmit={addEvent} />}
-    </section>
+        {showForm && <EventForm onClose={() => setShowForm(false)} onSubmit={addEvent} />}
+      </section>
   );
 }
 

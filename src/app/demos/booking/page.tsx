@@ -158,24 +158,24 @@ export default function BookingDemo() {
   };
 
   return (
-    <section className="px-6 py-12 lg:px-8">
+    <section className="px-6 py-8 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="mb-2 text-sm font-medium tracking-wider uppercase text-accent">
-              Demo · Booking Dashboard
-            </p>
-            <h1 className="font-display text-4xl font-700 tracking-tight md:text-5xl">
-              Scheduling
+            <h1 className="font-display text-3xl font-700 tracking-tight md:text-4xl">
+              Calendar
             </h1>
+            <p className="mt-1 text-muted-foreground">
+              This week&apos;s bookings — click a slot to cycle its status.
+            </p>
           </div>
           <button
             onClick={() => setShowForm(true)}
-            className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-sm font-semibold text-primary-foreground hover:opacity-90 transition"
           >
-            <Plus className="h-4 w-4" /> New booking
+            <Plus className="h-3.5 w-3.5" /> New booking
           </button>
-        </header>
+        </div>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard label="Today" value={stats.today} sub="bookings" />
@@ -325,14 +325,14 @@ export default function BookingDemo() {
         </div>
       </div>
 
-      {showForm && (
-        <BookingForm
-          services={services}
-          defaultService={selectedService}
-          onClose={() => setShowForm(false)}
-          onSubmit={addBooking}
-        />
-      )}
+        {showForm && (
+          <BookingForm
+            services={services}
+            defaultService={selectedService}
+            onClose={() => setShowForm(false)}
+            onSubmit={addBooking}
+          />
+        )}
     </section>
   );
 }

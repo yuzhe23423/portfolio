@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { BackToTop } from "@/components/ui/back-to-top";
+import { SiteChrome } from "@/components/layout/site-chrome";
 import { personalInfo } from "@/data/personal";
 
 const fraunces = Fraunces({
@@ -74,10 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <ThemeProvider>
           <a href="#main" className="skip-to-content">Skip to content</a>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <BackToTop />
+          <SiteChrome>{children}</SiteChrome>
         </ThemeProvider>
       </body>
     </html>

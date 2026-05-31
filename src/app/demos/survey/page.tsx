@@ -8,6 +8,8 @@ import {
   Star,
   RotateCcw,
   Sparkles,
+  Radio,
+  Shield,
 } from "lucide-react";
 
 type Question =
@@ -75,34 +77,53 @@ export default function SurveyDemo() {
   const canProceed = !currentQuestion || isAnswered(currentQuestion);
 
   return (
-    <section className="px-6 py-12 lg:px-8">
-      <div className="mx-auto max-w-2xl">
-        <header className="mb-8">
-          <p className="mb-2 text-sm font-medium tracking-wider uppercase text-accent">
-            Demo · Survey System
-          </p>
-          <h1 className="font-display text-4xl font-700 tracking-tight">
-            Developer survey 2026
-          </h1>
-          <p className="mt-2 text-muted-foreground">
-            A quick 4-question survey. Takes about 30 seconds.
-          </p>
-        </header>
-
-        <div className="mb-6">
-          <div className="mb-2 flex items-center justify-between text-xs font-medium text-muted-foreground">
-            <span>{stepLabels[step]}</span>
-            <span>
-              Step {step + 1} / {totalSteps}
+    <div className="min-h-screen">
+      {/* Pulse minimal header */}
+      <header className="border-b border-border">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-2">
+            <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-foreground text-background">
+              <Radio className="h-3.5 w-3.5" />
+            </span>
+            <span className="font-display text-lg font-700 tracking-tight">
+              Pulse
             </span>
           </div>
-          <div className="h-1.5 overflow-hidden rounded-full bg-muted">
-            <div
-              className="h-full rounded-full bg-accent transition-all duration-500"
-              style={{ width: `${progress}%` }}
-            />
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Shield className="h-3.5 w-3.5" />
+            <span>Anonymous · 30 sec</span>
           </div>
         </div>
+      </header>
+
+      <section className="px-6 py-12 lg:px-8">
+        <div className="mx-auto max-w-2xl">
+          <div className="mb-8">
+            <p className="mb-1 text-xs font-mono tracking-[0.15em] uppercase text-accent">
+              Developer Pulse · 2026
+            </p>
+            <h1 className="font-display text-3xl md:text-4xl font-700 tracking-tight">
+              How is your dev workflow?
+            </h1>
+            <p className="mt-2 text-muted-foreground">
+              A quick {questions.length}-question survey. Your answers stay anonymous.
+            </p>
+          </div>
+
+          <div className="mb-6">
+            <div className="mb-2 flex items-center justify-between text-xs font-medium text-muted-foreground">
+              <span>{stepLabels[step]}</span>
+              <span>
+                Step {step + 1} / {totalSteps}
+              </span>
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+              <div
+                className="h-full rounded-full bg-accent transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
 
         <div className="min-h-[380px] rounded-2xl border border-border bg-card p-8">
           {step === 0 && <Intro onStart={next} />}
@@ -135,8 +156,9 @@ export default function SurveyDemo() {
             </button>
           </div>
         )}
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }
 

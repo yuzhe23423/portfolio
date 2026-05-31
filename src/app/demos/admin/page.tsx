@@ -10,11 +10,6 @@ import {
   MoreHorizontal,
   ArrowUpRight,
   ArrowDownRight,
-  LayoutDashboard,
-  CreditCard,
-  Settings,
-  Bell,
-  CircleUser,
   Activity,
 } from "lucide-react";
 
@@ -66,35 +61,15 @@ export default function AdminDemo() {
 
   return (
     <section className="px-6 py-8 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[220px_1fr]">
-        <Sidebar />
-
-        <div className="min-w-0">
-          <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <p className="mb-1 text-sm font-medium tracking-wider uppercase text-accent">
-                Demo · Admin Panel
-              </p>
-              <h1 className="font-display text-3xl font-700 tracking-tight md:text-4xl">
-                Dashboard overview
-              </h1>
-            </div>
-            <div className="flex items-center gap-2">
-              <button
-                aria-label="Notifications"
-                className="rounded-lg border border-border bg-card p-2 text-muted-foreground hover:bg-muted"
-              >
-                <Bell className="h-4 w-4" />
-              </button>
-              <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5">
-                <div className="h-7 w-7 rounded-full bg-gradient-to-br from-accent to-amber-500" />
-                <div className="text-sm">
-                  <div className="font-medium leading-tight">Ong Yu Zhe</div>
-                  <div className="text-[11px] text-muted-foreground leading-tight">Owner</div>
-                </div>
-              </div>
-            </div>
-          </header>
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-6">
+          <h1 className="font-display text-3xl font-700 tracking-tight md:text-4xl">
+            Overview
+          </h1>
+          <p className="mt-1 text-muted-foreground">
+            How the business is doing this month.
+          </p>
+        </div>
 
           <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <KPI icon={Users} label="Total users" value="2,847" delta="+12.4%" trend="up" />
@@ -223,54 +198,7 @@ export default function AdminDemo() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Sidebar() {
-  const items = [
-    { icon: LayoutDashboard, label: "Dashboard", active: true },
-    { icon: Users, label: "Users" },
-    { icon: ShoppingBag, label: "Orders" },
-    { icon: CreditCard, label: "Billing" },
-    { icon: Settings, label: "Settings" },
-  ];
-  return (
-    <aside className="hidden lg:block">
-      <div className="sticky top-20 rounded-xl border border-border bg-card p-4">
-        <div className="mb-5 flex items-center gap-2 px-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-primary-foreground font-display font-700">
-            A
-          </div>
-          <div className="font-display text-base font-700">Atlas</div>
-        </div>
-        <nav className="space-y-1">
-          {items.map((item) => {
-            const Icon = item.icon;
-            return (
-              <button
-                key={item.label}
-                className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition ${
-                  item.active
-                    ? "bg-accent/10 text-accent"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                {item.label}
-              </button>
-            );
-          })}
-        </nav>
-        <div className="mt-5 border-t border-border pt-4">
-          <button className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition">
-            <CircleUser className="h-4 w-4" />
-            Profile
-          </button>
-        </div>
-      </div>
-    </aside>
+      </section>
   );
 }
 
